@@ -1,0 +1,110 @@
+import java.util.*;
+public class FirstLab {
+    public static String Encryption(){
+        Scanner sc=new Scanner(System.in);
+        int key;
+        char [] text;
+        while(true){
+            System.out.print("Enter the Text in LowerCase : ");
+            String str=sc.nextLine();
+            text=str.toCharArray();
+            boolean valid=true;
+            for(int i=0;i<text.length;i++){
+                if (text[i]==' '){
+                    continue;
+                }
+                else if(text[i]<'a' || text[i]>'z'){
+                      valid = false;
+                      break;
+                }
+                
+                
+            }
+
+            if(!valid){
+                System.out.println("Please Enter text only and also make sure it is in lower Case:");
+                continue;
+            }
+            else {
+                break;
+            }
+
+        }
+        System.out.print("Enter the Key : ");
+        key=sc.nextInt();
+        char cypher[]=new char[text.length];
+        for(int i=0;i<text.length;i++){
+            cypher[i]= (char) (text[i]+key);
+        }
+        String cyphertext=new String(cypher);
+        cyphertext=cyphertext.toUpperCase();
+        
+        return cyphertext;
+    }
+    public static String Decryption(){
+        Scanner sc=new Scanner(System.in);
+        int key;
+        char [] text;
+        System.out.print("Enter The Encrypted text In UpperCase: ");
+        String str=sc.nextLine();
+        text=str.toCharArray();
+       
+        System.out.print("Enter The Key: ");
+        key=sc.nextInt();
+        char cypher[]=new char[text.length];
+        for(int i=0;i<text.length;i++){
+            cypher[i]= (char) (text[i]-key);
+        }
+        String cyphertext=new String(cypher);
+        cyphertext=cyphertext.toLowerCase();
+        
+        return cyphertext;
+    }
+    public static int Brute_force(char x,char y){
+                int i=1;
+                x=Character.toLowerCase(x);
+                while(true){
+                    if ((x-i)==y) {
+                        return i;
+                    }
+                    else {
+                        i++;
+                    }
+                    if(i>40){
+                        return 0;
+                    }
+                }
+    }
+    public static void main(String s[]){
+        while(true){
+            Scanner sc=new Scanner(System.in);
+            System.out.print ("For Encryption : 1 " + "\t For Decryption : 2" + "\nFor Bruteforce : 3" + "\t For Exit : 99" + "\nEnter Your Choice :");
+            int a=sc.nextInt();
+            if(a==1){
+                System.out.println("This is The Encrypted Text : " + Encryption());
+            }
+            else if(a==2){
+                System.out.println("This is Decrypted Text : "+Decryption());
+            }
+            else if(a==3){
+                System.out.print("We Have two Option 1st is Key Finding : 1 " + " \tSecond Is UnAvailable \n");
+                System.out.println("So Directly We are using 1st option :");
+                System.out.print("So First Give the Encrypted Key: ");
+                char x=sc.next().charAt(0);
+                System.out.print("Enter The Decrypted Code :");
+                char y=sc.next().charAt(0);
+                int r=Brute_force(x, y);
+                if(r==0){
+                    System.out.print("The Key is bigger then 40");
+
+                }
+                System.out.println("The key is :" + r);
+
+            }
+            else if(a==99){
+                break ;
+            }
+
+    }
+    }
+}
