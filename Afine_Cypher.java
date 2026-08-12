@@ -1,5 +1,5 @@
 import java.util.*;
-public class Afine
+public class Afine_Cypher
 {
 	
 	public static int gcd(int a, int b) {
