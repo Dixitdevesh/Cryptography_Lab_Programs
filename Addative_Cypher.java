@@ -35,7 +35,7 @@ public class FirstLab {
         char cypher[]=new char[text.length];
         for(int i=0;i<text.length;i++){
             int x=text[i]-97;
-            char cypher[i]= (char)( (x+key)+97);
+            char cypher[i]= (char)( ((x+key)%26)+97);
         }
         String cyphertext=new String(cypher);
         cyphertext=cyphertext.toUpperCase();
@@ -55,7 +55,7 @@ public class FirstLab {
         char cypher[]=new char[text.length];
         for(int i=0;i<text.length;i++){
             int m=text[i]-97;
-            cypher[i]= (char) ((text[i]-key)+97);
+            cypher[i]= (char) (((text[i]-key)%26)+97);
         }
         String cyphertext=new String(cypher);
         cyphertext=cyphertext.toLowerCase();
