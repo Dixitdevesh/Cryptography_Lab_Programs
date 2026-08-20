@@ -1,5 +1,5 @@
 import java.util.*;
-public class FirstLab {
+public class Main{
     public static String Encryption(){
         Scanner sc=new Scanner(System.in);
         int key;
@@ -34,8 +34,12 @@ public class FirstLab {
         key=sc.nextInt();
         char cypher[]=new char[text.length];
         for(int i=0;i<text.length;i++){
+             if (text[i]==' '){
+                    cypher[i]=text[i];
+                    continue;
+                }
             int x=text[i]-97;
-            char cypher[i]= (char)( ((x+key)%26)+97);
+            cypher[i]= (char)( ((x+key)%26)+97);
         }
         String cyphertext=new String(cypher);
         cyphertext=cyphertext.toUpperCase();
@@ -48,14 +52,19 @@ public class FirstLab {
         char [] text;
         System.out.print("Enter The Encrypted text In UpperCase: ");
         String str=sc.nextLine();
+        str=str.toLowerCase();
         text=str.toCharArray();
        
         System.out.print("Enter The Key: ");
         key=sc.nextInt();
         char cypher[]=new char[text.length];
         for(int i=0;i<text.length;i++){
+             if (text[i]==' '){
+                 cypher[i]=text[i];
+                    continue;
+                }
             int m=text[i]-97;
-            cypher[i]= (char) (((text[i]-key)%26)+97);
+            cypher[i]= (char) ((((m-key)+26)%26)+97);
         }
         String cyphertext=new String(cypher);
         cyphertext=cyphertext.toLowerCase();
@@ -66,7 +75,7 @@ public class FirstLab {
                 int i=1;
                 x=Character.toLowerCase(x);
                 while(true){
-                    if ((x-i)==y) {
+                    if ((((x-97)-i)%26)+26==y) {
                         return i;
                     }
                     else {
