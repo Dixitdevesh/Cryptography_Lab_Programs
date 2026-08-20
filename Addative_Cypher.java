@@ -34,7 +34,8 @@ public class FirstLab {
         key=sc.nextInt();
         char cypher[]=new char[text.length];
         for(int i=0;i<text.length;i++){
-            cypher[i]= (char) (text[i]+key);
+            int x=text[i]-97;
+            char cypher[i]= (char)( (x+key)+97);
         }
         String cyphertext=new String(cypher);
         cyphertext=cyphertext.toUpperCase();
@@ -53,7 +54,8 @@ public class FirstLab {
         key=sc.nextInt();
         char cypher[]=new char[text.length];
         for(int i=0;i<text.length;i++){
-            cypher[i]= (char) (text[i]-key);
+            int m=text[i]-97;
+            cypher[i]= (char) ((text[i]-key)+97);
         }
         String cyphertext=new String(cypher);
         cyphertext=cyphertext.toLowerCase();
@@ -70,7 +72,7 @@ public class FirstLab {
                     else {
                         i++;
                     }
-                    if(i>40){
+                    if(i>26){
                         return 0;
                     }
                 }
@@ -95,7 +97,7 @@ public class FirstLab {
                 char y=sc.next().charAt(0);
                 int r=Brute_force(x, y);
                 if(r==0){
-                    System.out.print("The Key is bigger then 40");
+                    System.out.print("The Key is bigger then 26");
 
                 }
                 System.out.println("The key is :" + r);
