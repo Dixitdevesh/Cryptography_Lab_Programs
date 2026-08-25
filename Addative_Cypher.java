@@ -99,7 +99,6 @@ public class Main{
             }
             else if(a==3){
                 System.out.print("We Have two Option 1st is Key Finding : 1 " + " \tSecond Is UnAvailable \n");
-                System.out.println("So Directly We are using 1st option :");
                 System.out.print("So First Give the Encrypted Key: ");
                 char x=sc.next().charAt(0);
                 System.out.print("Enter The Decrypted Code :");
