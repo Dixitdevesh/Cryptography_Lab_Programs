@@ -1,5 +1,5 @@
 import java.util.*;
-public class Afine_Cypher
+public class Main
 {
 	
 	public static int gcd(int a, int b) {
@@ -38,7 +38,7 @@ public class Afine_Cypher
 
         }
         while(true){
-            System.out.print("Enter the Key : ");
+            System.out.print("Enter the First Key  : ");
                 try {
                key = sc.nextInt();
                if(gcd(key,26)==1  && key <26 && key >=1){
