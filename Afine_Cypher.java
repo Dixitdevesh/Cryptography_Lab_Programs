@@ -1,8 +1,6 @@
 import java.util.*;
-public class Main
-{
-	
-	public static int gcd(int a, int b) {
+public class Main {
+    static int gcd(int a, int b) {
         while (b != 0) {
             int temp = b;
             b = a % b;
@@ -27,7 +25,10 @@ public class Main
                       valid = false;
                       break;
                 }
+                
+                
             }
+
             if(!valid){
                 System.out.println("Please Enter text only and also make sure it is in lower Case:");
                 continue;
@@ -37,8 +38,8 @@ public class Main
             }
 
         }
-        while(true){
-            System.out.print("Enter the First Key  : ");
+         while(true){
+            System.out.print("Enter the  Key  : ");
                 try {
                key = sc.nextInt();
                if(gcd(key,26)==1  && key <26 && key >=1){
@@ -47,12 +48,12 @@ public class Main
             
              System.out.println("Invalid Key");
                
- } 
-          catch (InputMismatchException e) {
-        System.out.println("Invalid input! Please enter an integer.");
-        sc.next(); 
+                }
+           catch (InputMismatchException e) {
+             System.out.println("Invalid input! Please enter an integer.");
+             sc.next(); 
     }
-        }
+         }
         char cypher[]=new char[text.length];
         for(int i=0;i<text.length;i++){
                 if(text[i]==' '){
@@ -67,81 +68,22 @@ public class Main
 		        cypher[i]=(char) (t +97);
 		
         }
-        int key2;
-        while(true){
-            System.out.print("Enter The Second Key: ");
-            
-            try {
-               key2 = sc.nextInt();
-               if(key2 <=26 &&  key2 >=1){
-                break;
-            }
-            
-             System.out.println("Invalid Key");
-               
- } 
-          catch (InputMismatchException e) {
-        System.out.println("Invalid input! Please enter an integer.");
-        sc.next(); 
-    }
-        }
-        char cypher2 []=new char [cypher.length];
-        for(int i=0;i<cypher.length;i++){
-            if(cypher[i]==' '){
-                    cypher[i]=text[i];
-                    continue;
-                }
-            int a=cypher[i]-97;
-            int x=(a+key2)%26;
-            char y=(char) (x+97) ;
-            cypher2[i]=y;
-        }
-        String cyphertext=new String(cypher2);
+        String cyphertext=new String(cypher);
         cyphertext=cyphertext.toUpperCase();
+        
         return cyphertext;
     }
     public static String Decryption(){
         Scanner sc=new Scanner(System.in);
-         int key2;
-        
+        int key;
         char [] text;
         System.out.print("Enter The Encrypted text In UpperCase: ");
         String str=sc.nextLine();
         str=str.toLowerCase();
-        
         text=str.toCharArray();
-        char text2 []=new char[text.length];
         while(true){
-             System.out.print("Enter The Second Key: ");
-            try {
-               key2 = sc.nextInt();
-               if(key2 <=26 &&  key2 >=1){
-                break;
-            }
-            
-             System.out.println("Invalid Key");
-               
- } 
-          catch (InputMismatchException e) {
-        System.out.println("Invalid input! Please enter an integer.");
-        sc.next(); 
-    }
-        }
-        
-        for(int i=0;i<text.length;i++){
-            if(text[i]==' '){
-                    text2[i]=text[i];
-                    continue;
-                }
-            int a=text[i]-97;
-            int x=(a-key2+26)%26;
-            char y=(char) (x+97);
-            text2[i]=y;
-        }
-        int key;
-        while(true){
-        System.out.print("Enter First Key Used In Encryption: ");
-             try {
+            System.out.print("Enter the First Key  : ");
+                try {
                key = sc.nextInt();
                if(gcd(key,26)==1  && key <26 && key >=1){
                 break;
@@ -150,18 +92,17 @@ public class Main
              System.out.println("Invalid Key");
                
  } 
-          catch (InputMismatchException e){
+          catch (InputMismatchException e) {
         System.out.println("Invalid input! Please enter an integer.");
         sc.next(); 
-     }
-    }
+    }}
         char cypher[]=new char[text.length];
-        for(int i=0;i<text2.length;i++){
-                if(text2[i]==' '){
+        for(int i=0;i<text.length;i++){
+                if(text[i]==' '){
                     cypher[i]=' ';
                     continue;
                 }
-                char a=text2[i];
+                char a=text[i];
 		        int n=(int )a-97;
                 int na=0;
                
@@ -184,36 +125,22 @@ public class Main
         
         return cyphertext;
     }
-    public static void Brute_force(String x,String  y){
-            
-            for(int m=1;m<=26;m++){ 
+    public static int Brute_force(String x,String  y){
+              
                 char e[]=x.toCharArray();
-                
-                char c[]=new char [e.length];
-                char cy[]=new char [e.length];
-                for(int i=0;i<e.length;i++){
-                    if(e[i]==' '){
-                       c[i]=e[i];
-                    continue;
-                                 }
-                    int a=e[i]-97;
-                    int v=(a-m+26)%26;
-                    char z=(char) (v+97);
-                    c[i]=z;
-        }
-                 
+                char c[]=new char [e.length]; 
                 int key=-1;
                 for(int k=1;k<26;k=k+2){
                     if(k==13){
                         continue;
                     }
-                     for(int i=0;i<c.length;i++){
+                     for(int i=0;i<e.length;i++){
                         
-                        if(c[i]==' '){
-                            cy[i]=' ';
+                        if(e[i]==' '){
+                            c[i]=' ';
                             continue;
                         }
-                        char a=c[i];
+                        char a=e[i];
                         int n=(int )a-97;
                         int na=0;
                         for(int j=1;j<=26;j=j+2){
@@ -226,24 +153,22 @@ public class Main
                             }
                         }
                         int t=((n*na)%26) ;
-                        cy[i]=(char) (t +97);
+                        c[i]=(char) (t +97);
                         
                         
                 }
-                String s=new String(cy);
+                String s=new String(c);
                 if(y.equals(s)){
-                    System.out.println("Second Key  or Multiplacative is :" + m);
-                    System.out.println("First Key  or Addative is :"+ k);
-                    return ;
+                    key=k;
+                    return key;
                 }
               }
             
-            
-            }
-            
+            System.out.print(key);
            
-            return ;
+            return -1;
      
+    
                 
                 }
     
@@ -265,8 +190,8 @@ public class Main
                 System.out.print("Enter The Decrypted Code :");
                 String  y=sc.nextLine();
                 x=x.toLowerCase();
-                Brute_force(x, y);
-                
+                int r=Brute_force(x, y);
+                System.out.println("Key is: " + r);
 
             }
             else if(a==99){
@@ -275,5 +200,4 @@ public class Main
 
     }
     }
-	
 }
