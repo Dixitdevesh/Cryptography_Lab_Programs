@@ -30,8 +30,23 @@ public class Main{
             }
 
         }
-        System.out.print("Enter the Key : ");
-        key=sc.nextInt();
+         while(true){
+            System.out.print("Enter The Key: ");
+            
+            try {
+               key = sc.nextInt();
+               if(key <=26 &&  key >=1){
+                break;
+            }
+            
+             System.out.println("Invalid Key");
+               
+ } 
+          catch (InputMismatchException e) {
+        System.out.println("Invalid input! Please enter an integer.");
+        sc.next(); 
+    }
+        }
         char cypher[]=new char[text.length];
         for(int i=0;i<text.length;i++){
              if (text[i]==' '){
@@ -55,8 +70,23 @@ public class Main{
         str=str.toLowerCase();
         text=str.toCharArray();
        
-        System.out.print("Enter The Key: ");
-        key=sc.nextInt();
+        while(true){
+            System.out.print("Enter The  Key: ");
+            
+            try {
+               key = sc.nextInt();
+               if(key <=26 &&  key >=1){
+                break;
+            }
+            
+             System.out.println("Invalid Key");
+               
+ } 
+          catch (InputMismatchException e) {
+        System.out.println("Invalid input! Please enter an integer.");
+        sc.next(); 
+    }
+        }
         char cypher[]=new char[text.length];
         for(int i=0;i<text.length;i++){
              if (text[i]==' '){
@@ -74,17 +104,17 @@ public class Main{
     public static int Brute_force(char x,char y){
                 int i=1;
                 x=Character.toLowerCase(x);
-                while(true){
-                    if ((((x-97)-i)%26)+26==y) {
-                        return i;
-                    }
-                    else {
-                        i++;
-                    }
-                    if(i>26){
-                        return 0;
-                    }
+            while (i <= 26) {
+                int value = (((x - 'a') - i) % 26 + 26) % 26;
+            
+                if (value ==(y-'a')) {
+                    return i;
                 }
+            
+                i++;
+            }
+            
+            return 99;
     }
     public static void main(String s[]){
         while(true){
@@ -98,14 +128,14 @@ public class Main{
                 System.out.println("This is Decrypted Text : "+Decryption());
             }
             else if(a==3){
-                System.out.print("We Have two Option 1st is Key Finding : 1 " + " \tSecond Is UnAvailable \n");
-                System.out.print("So First Give the Encrypted Key: ");
+                System.out.print("So First Give the Encrypted Key In UpperCase: ");
                 char x=sc.next().charAt(0);
-                System.out.print("Enter The Decrypted Code :");
+                System.out.print("Enter The Decrypted Code In LowerCase :");
                 char y=sc.next().charAt(0);
                 int r=Brute_force(x, y);
-                if(r==0){
-                    System.out.print("The Key is bigger then 26");
+                if(r==99){
+                    System.out.println("The Key is bigger then 26");
+                    continue;
 
                 }
                 System.out.println("The key is :" + r);
