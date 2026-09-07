@@ -1,5 +1,5 @@
 import java.util.*;
-public class Multiplicative_Cypher {
+public class Main {
     static int gcd(int a, int b) {
         while (b != 0) {
             int temp = b;
@@ -10,7 +10,7 @@ public class Multiplicative_Cypher {
       }
     public static String Encryption(){
         Scanner sc=new Scanner(System.in);
-        int key;
+        int  key;
         char [] text;
         while(true){
             System.out.print("Enter the Text in LowerCase : ");
@@ -18,6 +18,7 @@ public class Multiplicative_Cypher {
             text=str.toCharArray();
             boolean valid=true;
             for(int i=0;i<text.length;i++){
+                
                 if (text[i]==' '){
                     continue;
                 }
@@ -29,7 +30,7 @@ public class Multiplicative_Cypher {
                 
             }
 
-            if(!valid){
+            if(!valid || text[0]==' '){
                 System.out.println("Please Enter text only and also make sure it is in lower Case:");
                 continue;
             }
@@ -38,14 +39,25 @@ public class Multiplicative_Cypher {
             }
 
         }
-        while(true){
-            System.out.print("Enter the Key : ");
-            key=sc.nextInt();
-            if(gcd(key,26)==1){
+         while(true){
+            System.out.print("Enter the  Key  : ");
+                try {
+               key = sc.nextInt();
+                
+               
+               if(gcd(key,26)==1  && key <26 && key >=1 ){
                 break;
             }
-            System.out.println("Invalid Key");
-        }
+               
+            
+             System.out.println("Invalid Key");
+               
+                }
+           catch (InputMismatchException e) {
+             System.out.println("Invalid input! Please enter an integer.");
+             sc.next(); 
+    }
+         }
         char cypher[]=new char[text.length];
         for(int i=0;i<text.length;i++){
                 if(text[i]==' '){
@@ -67,19 +79,29 @@ public class Multiplicative_Cypher {
     }
     public static String Decryption(){
         Scanner sc=new Scanner(System.in);
-        int key;
+       int   key;
         char [] text;
         System.out.print("Enter The Encrypted text In UpperCase: ");
         String str=sc.nextLine();
         str=str.toLowerCase();
         text=str.toCharArray();
         while(true){
-        System.out.print("Enter The Key Used In Encryption: ");
-        key=sc.nextInt();
-        if(gcd(key,26)==1){
-            break;
-        }
+            System.out.print("Enter the  Key  : ");
+                try {
+               key = sc.nextInt();
+               
+               if(gcd(key,26)==1  && key <26 && key >=1){
+                break;
+            }
+            
+             System.out.println("Invalid Key");
+               
+                }
+           catch (InputMismatchException e) {
+             System.out.println("Invalid input! Please enter an integer.");
+             sc.next(); 
     }
+         }
         char cypher[]=new char[text.length];
         for(int i=0;i<text.length;i++){
                 if(text[i]==' '){
