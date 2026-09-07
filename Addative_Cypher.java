@@ -21,7 +21,7 @@ public class Main{
                 
             }
 
-            if(!valid){
+            if(!valid || text[0]==' '){
                 System.out.println("Please Enter text only and also make sure it is in lower Case:");
                 continue;
             }
